@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P4S</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="overlay hidden"></div>
+    <section id="modal" class="hidden"> 
+      <svg id="close" width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.6562 0H2.34375C1.0498 0 0 1.0498 0 2.34375V19.5312C0 20.8252 1.0498 21.875 2.34375 21.875H22.6562C23.9502 21.875 25 20.8252 25 19.5312V2.34375C25 1.0498 23.9502 0 22.6562 0ZM18.5742 14.1846C18.8086 14.4189 18.8086 14.7998 18.5742 15.0342L16.5967 17.0117C16.3623 17.2461 15.9814 17.2461 15.7471 17.0117L12.5 13.7354L9.25293 17.0117C9.01855 17.2461 8.6377 17.2461 8.40332 17.0117L6.42578 15.0342C6.19141 14.7998 6.19141 14.4189 6.42578 14.1846L9.70215 10.9375L6.42578 7.69043C6.19141 7.45605 6.19141 7.0752 6.42578 6.84082L8.40332 4.86328C8.6377 4.62891 9.01855 4.62891 9.25293 4.86328L12.5 8.13965L15.7471 4.86328C15.9814 4.62891 16.3623 4.62891 16.5967 4.86328L18.5742 6.84082C18.8086 7.0752 18.8086 7.45605 18.5742 7.69043L15.2979 10.9375L18.5742 14.1846Z" fill="#E6E5EA"/>
+      </svg>
+      <div id="password" class="hidden">
+        <p></p>
+      </div>
+      <div id="worning" class="hidden">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.2 9H19.8V12.6H16.2V9ZM16.2 16.2H19.8V27H16.2V16.2ZM18 0C8.064 0 0 8.064 0 18C0 27.936 8.064 36 18 36C27.936 36 36 27.936 36 18C36 8.064 27.936 0 18 0ZM18 32.4C10.062 32.4 3.6 25.938 3.6 18C3.6 10.062 10.062 3.6 18 3.6C25.938 3.6 32.4 10.062 32.4 18C32.4 25.938 25.938 32.4 18 32.4Z" fill="#FACA65"/>
+        </svg>
+        <p>Please, select at least one option or/and set a password length!</p>
+      </div>
+    </section>
+    <main>
+      <div>
+        <div id="pass-container">
+          <span id="pass">P4S$W0rD!</span>
+        </div>
+        <div id="btn-copy">
+          <svg class="enable-copy" id="svg-copy" viewBox="0 0 25 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.8571 25.375V27.6406C17.8571 28.3914 17.2575 29 16.5179 29H1.33929C0.599609 29 0 28.3914 0 27.6406V6.79688C0 6.0461 0.599609 5.4375 1.33929 5.4375H5.35714V22.2031C5.35714 23.9521 6.75898 25.375 8.48214 25.375H17.8571ZM17.8571 5.89062V0H8.48214C7.74247 0 7.14286 0.608604 7.14286 1.35938V22.2031C7.14286 22.9539 7.74247 23.5625 8.48214 23.5625H23.6607C24.4004 23.5625 25 22.9539 25 22.2031V7.25H19.1964C18.4598 7.25 17.8571 6.63828 17.8571 5.89062ZM24.6078 4.13312L20.928 0.398127C20.6768 0.143212 20.3362 1.88498e-06 19.981 0L19.6429 0V5.4375H25V5.09431C25 4.7338 24.8589 4.38805 24.6078 4.13312Z" fill="#817e90"/>
+          </svg>
+        </div>
+      </div>
+      <section>
+        <header>
+          <p>Character Length</p><span id="rangeValue">0</span>
+        </header>
+        <div id="progress-bar">
+          <input type="range" min="0" max="100" value="0" id="length">
+          <div id="bar"></div>
+        </div>
+        <div>
+          <input type="checkbox" id="uppercase" name="scales">
+          <label for="uppercase">Include Uppercase Letters</label>
+        </div>
+        <div>
+          <input type="checkbox" id="lowercase" name="scales">
+          <label for="lowercase">Include Lowercase Letters</label>
+        </div>
+        <div>
+          <input type="checkbox" id="numbers" name="scales">
+          <label for="numbers">Include Numbers</label>
+        </div>
+        <div>
+          <input type="checkbox" id="symbols" name="scales">
+          <label for="symbols">Include Symbols</label>
+        </div>
+        <div id="strength">
+          <span>STRENGTH</span>
+
+          <div>
+            <span>STRONG</span>
+            <ul>
+              <li>
+                <div id="bar-1" class="strong-bar"></div>
+              </li>
+              <li>
+                <div id="bar-2" class="strong-bar"></div>
+              </li>
+              <li>
+                <div id="bar-3" class="strong-bar"></div>
+              </li>
+              <li>
+                <div id="bar-4" class="strong-bar"></div>
+              </li>
+              <li>
+                <div id="bar-5" class="strong-bar"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button id="btn-gen">GENERATE</button>
+      </section>
+      <footer></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
