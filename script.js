@@ -19,7 +19,7 @@
  const divPassword = document.querySelector('#password');
  const pPassword = document.querySelector('#password > p');
 
- let password = false; // ok
+ let password = false;
 
 slider.oninput = () => {
   progressBar.style.width = `${slider.value}%`;
@@ -71,6 +71,7 @@ const passGenerator = function (len) {
       sym = Math.trunc(Math.random() * specialSymbol.length);
       password += specialSymbol[sym];
     }
+
     password = [...password].sort(() => 0.5 - Math.random()).join('');
   }
 
@@ -114,22 +115,13 @@ const setPassword = function () {
 btnGen.addEventListener('click', (e) => {
   e.preventDefault();
 
-  if (!lowercase.checked && 
-      !uppercase.checked && 
-      !numbers.checked &&
-      !symbols.checked 
-    ) {
+    if (checkStrength() && checkOptions()) {      
+      btnAnimation(btnGen, e);
+      pPassword.innerText = pass.innerText = passGenerator(Number(slider.value));
+      setPassword();
+    } else {
       showWorningModal();
-    } 
-    
-    if (+slider.value <= 0) {
-      showWorningModal();
-      return;
     }
-
-    btnAnimation(btnGen, e);
-    pPassword.innerText = pass.innerText = passGenerator(Number(slider.value));
-    setPassword();
 });
 
 document.addEventListener('keydown', function (e) {
@@ -152,7 +144,7 @@ svgCopy.addEventListener('click', function () {
     passCont.style.animation = 'none';
     passCont.offsetHeight; /* trigger reflow */
     passCont.style.animation = null;
-    navigator.clipboard.writeText(pPassword.innerText)
+    navigator.clipboard.writeText(pPassword.innerText);
   }
 });
 
@@ -221,4 +213,22 @@ const colorRemover = function (bars) {
     n.classList.remove('strong-bar-green');
     n.classList.remove('strong-bar-red');
   });
+}
+
+const checkStrength = function() {
+  if (+slider.value <= 0) {
+    return false;
+  }
+  return true;
+}
+
+const checkOptions = function () {
+  if (!lowercase.checked && 
+    !uppercase.checked && 
+    !numbers.checked &&
+    !symbols.checked 
+  ) {
+    return false;
+  }
+  return true;
 }
